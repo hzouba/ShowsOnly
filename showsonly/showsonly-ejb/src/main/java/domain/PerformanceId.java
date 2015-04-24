@@ -23,34 +23,44 @@ public class PerformanceId implements Serializable {
 		super();
 	}
 
-	public PerformanceId(Integer idSubscription, Integer idGame, Date dateOfGame) {
+	public PerformanceId(Integer idShow, Integer idTheater, Date dateOfPerformance) {
 		super();
-		this.idShow = idSubscription;
-		this.idTheater = idGame;
-		this.dateOfPerformance = dateOfGame;
+		this.idShow = idShow;
+		this.idTheater = idTheater;
+		this.dateOfPerformance = dateOfPerformance;
 	}
 
-	public PerformanceId(Integer idSubscription, Integer idGame) {
+	public PerformanceId(Integer idShow, Integer idTheater) {
 		super();
-		this.idShow = idSubscription;
-		this.idTheater = idGame;
+		this.idShow = idShow;
+		this.idTheater = idTheater;
 		this.dateOfPerformance = new Date();
 	}
 
-	public Integer getIdSubscription() {
-		return this.idShow;
+
+
+	public Integer getIdShow() {
+		return idShow;
 	}
 
-	public void setIdSubscription(Integer IdSubscription) {
-		this.idShow = IdSubscription;
+	public void setIdShow(Integer idShow) {
+		this.idShow = idShow;
 	}
 
-	public Integer getIdGame() {
-		return this.idTheater;
+	public Integer getIdTheater() {
+		return idTheater;
 	}
 
-	public void setIdGame(Integer IdGame) {
-		this.idTheater = IdGame;
+	public void setIdTheater(Integer idTheater) {
+		this.idTheater = idTheater;
+	}
+	@Temporal(TemporalType.DATE)
+	public Date getDateOfPerformance() {
+		return dateOfPerformance;
+	}
+
+	public void setDateOfPerformance(Date dateOfPerformance) {
+		this.dateOfPerformance = dateOfPerformance;
 	}
 
 	@Override
@@ -84,13 +94,7 @@ public class PerformanceId implements Serializable {
 			return false;
 		return true;
 	}
-@Temporal(TemporalType.DATE)
-	public Date getDateOfGame() {
-		return dateOfPerformance;
-	}
 
-	public void setDateOfGame(Date dateOfGame) {
-		this.dateOfPerformance = dateOfGame;
-	}
+
 
 }

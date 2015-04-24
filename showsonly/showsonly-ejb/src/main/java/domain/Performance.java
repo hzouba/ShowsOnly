@@ -1,11 +1,13 @@
 package domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  * Entity implementation class for Entity: Play
@@ -19,6 +21,16 @@ public class Performance implements Serializable {
 	private PerformanceId playeId;
 	private Show show;
 	private Theater theater;
+	private List<Ticket> tickets;
+	
+	@OneToMany(mappedBy = "performance")
+	public List<Ticket> getTickets() {
+		return tickets;
+	}
+
+	public void setTickets(List<Ticket> tickets) {
+		this.tickets = tickets;
+	}
 
 	public Performance() {
 		super();
