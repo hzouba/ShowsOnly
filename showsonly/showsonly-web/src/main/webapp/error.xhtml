@@ -1,0 +1,22 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/template/template.xhtml">
+
+	<ui:define name="pageTitle">404</ui:define>
+	<ui:define name="pageContent">
+		<div class="error-wrapper">
+            <a href='index.jsf' class="logo logo--dark">
+                <img alt='logo' src="#{request.contextPath}/resources/images/logo-dark.png"/>
+                <p class="slogan--dark">fun to search, fun to watch</p>
+            </a>
+
+            <div class="error">
+                <img alt='' src='#{request.contextPath}/resources/images/error.png' class="error__image"/>
+                <h1 class="error__text">sorry, but user can’t be found</h1>
+                <a href="index.jsf" class="btn btn-md btn--warning">return to homepage</a>
+            </div>
+        </div>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,21 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/template/template.xhtml">
+	<ui:define name="pageTitle">Administration home</ui:define>
+	<ui:define name="pageContent">
+		<div class="content-wrapper specific--wrapper">
+            <div class="container">
+                <div class="heading--outcontainer">  
+                    <h1 class="unslyled">Welcome to the Administration</h1>
+                </div>
+            </div>  
+        </div>
+	</ui:define>
+	<ui:define name="mainNav">
+		<ui:include src="/pages/admin/mainNavAdmin.xhtml" />
+	</ui:define>
+</ui:composition>
+

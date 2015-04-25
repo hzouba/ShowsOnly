@@ -1,0 +1,132 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/template/template.xhtml">
+
+	<ui:define name="pageTitle">Shows Only</ui:define>
+	<ui:define name="pageSlider">
+		<!-- Slider -->
+            <div class="bannercontainer">
+                    <div class="banner">
+                        <ul>
+
+                            
+
+                            <li data-transition="fade" data-slotamount="7" class="slide fading-slide" data-slide='Travel worldwide.
+Create trip film.'>
+                                <img alt='' src="http://placehold.it/1920x616"/>
+                                 <div class="caption slide__video" data-x="0" data-y="0" data-autoplay='true'>
+                                 
+                                   <iframe width="1600" height="900" class="media-element" src="https://www.youtube.com/embed/FjuzzLPQbHg?autoplay=1&amp;showinfo=0&amp;controls=0&amp;VQ=HD1080&amp;rel=1&amp;loop=1" frameborder="0" allowfullscreen="1"></iframe>
+                                </div>
+
+                                 <div class="caption slide__name slide__name--smaller" 
+                                     data-x="left" 
+                                     data-y="200" 
+
+                                     data-splitin="chars"
+                                     data-elementdelay="0.1"
+
+                                     data-speed="700" 
+                                     data-start="1400" 
+                                     data-easing="easeOutBack"
+
+                                     data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:0;transformOrigin:50% 50%;"
+
+                                    data-frames="{ typ :lines;
+                                                 elementdelay :0.1;
+                                                 start:1650;
+                                                 speed:500;
+                                                 ease:Power3.easeOut;
+                                                 animation:x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:1;transformPerspective:600;transformOrigin:50% 50%;
+                                                 },
+                                                 { typ :lines;
+                                                 elementdelay :0.1;
+                                                 start:2150;
+                                                 speed:500;
+                                                 ease:Power3.easeOut;
+                                                 animation:x:0;y:0;z:0;rotationX:00;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:1;transformPerspective:600;transformOrigin:50% 50%;
+                                                 }
+                                                 "
+
+
+                                    data-splitout="lines"
+                                    data-endelementdelay="0.1"
+                                    data-customout="x:-230;y:0;z:0;rotationX:0;rotationY:0;rotationZ:90;scaleX:0.2;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%"
+                                    data-endspeed="500"
+                                   
+                                    data-endeasing="Back.easeIn"
+                                     >
+                                    Welcome to Shows Only
+                                </div>
+
+                                
+
+                                 
+                            </li>
+
+                            
+
+                        </ul>
+                    </div>
+                </div>
+
+        <!--end slider -->
+	</ui:define>
+	
+	<ui:define name="mainNav">
+		<!-- Main website navigation-->
+                <nav id="navigation-box">
+                    <!-- Toggle for mobile menu mode -->
+                    <a href="#" id="navigation-toggle">
+                        <span class="menu-icon">
+                            <span class="icon-toggle" role="button" aria-label="Toggle Navigation">
+                              <span class="lines"></span>
+                            </span>
+                        </span>
+                    </a>
+                    
+                    <!-- Link navigation -->
+                    <ul id="navigation">
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li>
+                            <a href="offers.html">Events</a>
+                        </li>
+                        <li>
+                            <a href="movie-list-full.html">Shows</a>
+                        </li>
+                        <li>
+                            <a href="cinema-list.html">Theatres</a>
+                        </li>
+                        <li>
+                            <a href="#">Regestration</a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- Additional header buttons / Auth and direct link to booking-->
+                <div class="control-panel">
+                    <div class="auth auth--home">
+                      <div class="auth__show">
+                        <span class="auth__image">
+                          <img alt="" src="http://placehold.it/31x31"/>
+                        </span>
+                      </div>
+                      <a href="#" class="btn btn--sign btn--singin">
+                          me
+                      </a>
+                        <ul class="auth__function">
+                            <li><a href="#" class="auth__function-item">Booked tickets</a></li>
+                        </ul>
+
+                    </div>
+                    <a href="#" class="btn btn-md btn--warning btn--book btn-control--home login-window">Book a ticket</a>
+                </div>
+                
+	</ui:define>
+	
+
+
+</ui:composition>

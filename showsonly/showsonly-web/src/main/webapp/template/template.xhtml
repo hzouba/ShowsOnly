@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+	
+        <meta charset="utf-8"/>
+        <title><ui:insert name="pageTitle" /></title>
+       
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta content="telephone=no" name="format-detection"/>
+        
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
+      
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,700' rel='stylesheet' type='text/css' />
+        
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:800italic' rel='stylesheet' type='text/css' />
+    
+        <link href="#{request.contextPath}/resources/css/gozha-nav.css" rel="stylesheet" />
+
+        <link href="#{request.contextPath}/resources/css/external/jquery.selectbox.css" rel="stylesheet" />
+
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/rs-plugin/css/settings.css" media="screen" />
+    
+        <link href="#{request.contextPath}/resources/css/style.css?v=1" rel="stylesheet" />
+
+        <script src="#{request.contextPath}/resources/js/external/modernizr.custom.js"></script>
+    
+    
+</h:head>
+
+<h:body>
+    <div class="wrapper">
+        <!-- Banner -->
+        <div class="banner-top">
+            <img alt='top banner' src="#{request.contextPath}/resources/images/bg_top.jpg"/>
+        </div>
+
+        <!-- Header section -->
+        <header class="header-wrapper header-wrapper--home">
+            <div class="container">
+                <!-- Logo link-->
+                <a href='#' class="logo">
+                    <img alt='logo' src="#{request.contextPath}/resources/images/logo.png"/>
+                </a>
+                
+                <ui:insert name="mainNav"></ui:insert>
+                
+                <ui:insert name="additionalHeader"></ui:insert>
+                
+            </div>
+        </header>
+
+        
+        <ui:insert name="pageSlider" />
+        
+        <!-- Main content -->
+        <section class="container">
+        
+           <ui:insert name="pageContent" />
+            
+                
+        </section>
+        
+        <div class="clearfix"></div>
+
+        <footer class="footer-wrapper">
+            <section class="container">
+               
+                
+                
+                <div class="col-xs-12 col-md-6">
+                    <div class="footer-info">
+                        
+                        <div class="clearfix"></div>
+                        <p class="copy">&amp;copy; Shows Only, 2015. All rights reserved. Done by Moslem Z, Zoubair H &amp; Chafik B</p>
+                    </div>
+                </div>
+            </section>
+        </footer>
+    </div>
+
+    <!-- open/close -->
+        <div class="overlay overlay-hugeinc">
+            
+            <section class="container">
+
+                <div class="login_form col-sm-4 col-sm-offset-4">
+                    <button type="button" class="overlay-close">Close</button>
+                    <h:form>
+                        <p class="login__title">sign in <br/><span class="login-edition">welcome to Shows Only</span></p>
+                        
+                        <div class="field-wrap">
+                        <h:inputText value="#{loginBean.user.login}" placeholder='Email' class="login__input"/>
+                        <h:inputSecret value="#{loginBean.user.password}" placeholder='Password' class="login__input"/>
+
+                         </div>
+                        
+                        <div class="login__control">
+                            <h:commandButton action="#{loginBean.doLogin}" value="Sign in"  class="btn btn-md btn--warning btn--wider"/>
+                           
+                        </div>
+                    </h:form>
+                </div>
+
+            </section>
+        </div>
+
+	<!-- JavaScript-->
+        <!-- jQuery 1.9.1--> 
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <!-- Migrate --> 
+        <script src="#{request.contextPath}/resources/js/external/jquery-migrate-1.2.1.min.js"></script>
+        <!-- Bootstrap 3--> 
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+        <!-- jQuery REVOLUTION Slider -->
+        <script type="text/javascript" src="#{request.contextPath}/resources/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+        <script type="text/javascript" src="#{request.contextPath}/resources/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+        <!-- Mobile menu -->
+        <script src="#{request.contextPath}/resources/js/jquery.mobile.menu.js"></script>
+         <!-- Select -->
+        <script src="#{request.contextPath}/resources/js/external/jquery.selectbox-0.2.min.js"></script>
+        <!-- Stars rate -->
+        <script src="#{request.contextPath}/resources/js/external/jquery.raty.js"></script>
+        
+        <!-- Form element -->
+        <script src="#{request.contextPath}/resources/js/external/form-element.js"></script>
+        <!-- Form validation -->
+        <script src="#{request.contextPath}/resources/js/form.js"></script>
+
+        <!-- Twitter feed -->
+        <script src="#{request.contextPath}/resources/js/external/twitterfeed.js"></script>
+
+        <!-- Custom -->
+        <script src="#{request.contextPath}/resources/js/custom.js"></script>
+		
+	      <script type="text/javascript">
+              $(document).ready(function() {
+                init_Home();
+              });
+		    </script>
+
+</h:body>
+</html>

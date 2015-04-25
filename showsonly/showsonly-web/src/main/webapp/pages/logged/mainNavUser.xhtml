@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+                
+         <!-- Main website navigation-->
+                <nav id="navigation-box">
+                    <!-- Toggle for mobile menu mode -->
+                    <a href="#" id="navigation-toggle">
+                        <span class="menu-icon">
+                            <span class="icon-toggle" role="button" aria-label="Toggle Navigation">
+                              <span class="lines"></span>
+                            </span>
+                        </span>
+                    </a>
+                    
+                    <!-- Link navigation -->
+                    <ul id="navigation">
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li>
+                            <a href="offers.html">Events</a>
+                        </li>
+                        <li>
+                            <a href="movie-list-full.html">Shows</a>
+                        </li>
+                        <li>
+                            <a href="cinema-list.html">Theatres</a>
+                        </li>
+                        <li>
+                            <a href="#">Regestration</a>
+                        </li>
+                    </ul>
+                </nav>
+           <!-- Additional header buttons / Auth and direct link to booking-->
+                <div class="control-panel">
+                    <div class="auth auth--home">
+                      <div class="auth__show">
+                        <span class="auth__image">
+                          <img alt="" src="http://placehold.it/31x31"/>
+                        </span>
+                      </div>
+                      <a href="#" class="btn btn--sign btn--singin">
+                          me
+                      </a>
+                        <ul class="auth__function">
+                            <li><a href="#" class="auth__function-item">Booked tickets</a></li>
+                        </ul>
+
+                    </div>
+                    <a href="#" class="btn btn-md btn--warning btn--book btn-control--home login-window">Book a ticket</a>
+                </div>
+	  	
+</ui:composition>
