@@ -20,12 +20,9 @@ public class Theater implements Serializable {
 	private Integer id;
 	private String name;
 	private Integer nbMaxPerson;
-	private String type;
+	private String Adresse;
 	private static final long serialVersionUID = 1L;
 	private List<Performance> plays;
-
-	
-
 	public Theater() {
 		super();
 	}
@@ -34,7 +31,7 @@ public class Theater implements Serializable {
 		super();
 		this.name = name;
 		this.nbMaxPerson = nbMaxPerson;
-		this.type = type;
+		this.Adresse = type;
 	}
 
 	@Id
@@ -63,13 +60,16 @@ public class Theater implements Serializable {
 		this.nbMaxPerson = nbMaxPerson;
 	}
 
-	public String getType() {
-		return this.type;
+	
+	
+	public String getAdresse() {
+		return Adresse;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setAdresse(String adresse) {
+		Adresse = adresse;
 	}
+
 	@OneToMany(mappedBy = "theater")
 	public List<Performance> getPlays() {
 		return plays;
