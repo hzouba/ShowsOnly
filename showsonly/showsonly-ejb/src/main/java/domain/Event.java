@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 /**
@@ -19,20 +18,19 @@ public class Event implements Serializable {
 
 	private Integer id;
 	private String name;
-	private String type;
+	private String periode;
 	private static final long serialVersionUID = 1L;
 
 	private List<Show> shows;
-
 
 	public Event() {
 		super();
 	}
 
-	public Event(String name, String type) {
+	public Event(String name, String periode) {
 		super();
 		this.name = name;
-		this.type = type;
+		this.periode = periode;
 	}
 
 	@Id
@@ -53,11 +51,6 @@ public class Event implements Serializable {
 		this.name = name;
 	}
 
-	
-
-	public String getType() {
-		return this.type;
-	}
 	@OneToMany(mappedBy = "event")
 	public List<Show> getShows() {
 		return shows;
@@ -67,11 +60,12 @@ public class Event implements Serializable {
 		this.shows = shows;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public String getPeriode() {
+		return periode;
 	}
 
+	public void setPeriode(String periode) {
+		this.periode = periode;
+	}
 
-
-	
 }

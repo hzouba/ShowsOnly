@@ -6,19 +6,20 @@ import javax.ejb.Remote;
 
 import domain.Event;
 import domain.Show;
+import domain.Theater;
 import domain.User;
 
 @Remote
 public interface TheaterManagementRemote {
-	Boolean addShow(Show show);
+	Boolean addTheater(Theater theater);
 
-	Show findShowById(Integer id);
+	Theater findTheaterById(Integer id);
 
-	Boolean deleteShow(Integer id);
+	Boolean deleteTheater(Integer id);
 
-	Boolean updateShow(Show show);
+	Boolean updateTheater(Theater theater);
 
-	List<Show> findAllShows();
+	List<Theater> findAllTheaters();
 	
 	
 	

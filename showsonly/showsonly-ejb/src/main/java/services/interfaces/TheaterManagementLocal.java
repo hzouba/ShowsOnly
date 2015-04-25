@@ -13,13 +13,13 @@ public interface TheaterManagementLocal {
 	
 	Boolean addTheater(Theater theater);
 
-	Show findTheaterById(Integer id);
+	Theater findTheaterById(Integer id);
 
 	Boolean deleteTheater(Integer id);
 
 	Boolean updateTheater(Theater theater);
 
-	List<Theater> findAllShows();
+	List<Theater> findAllTheaters();
 
 	
 }
