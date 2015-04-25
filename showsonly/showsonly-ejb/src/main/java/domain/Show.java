@@ -15,7 +15,10 @@ import javax.persistence.OneToMany;
 public class Show implements Serializable {
 
 	private Integer id;
-	private String name;
+	private String title;
+	private String description;
+	private String crew;
+	
 	private static final long serialVersionUID = 1L;
 	private Event event;
 	private List<Performance> plays;
@@ -43,9 +46,11 @@ public class Show implements Serializable {
 		super();
 	}
 
-	public Show(String name) {
+	public Show(String title, String description, String crew) {
 		super();
-		this.name = name;
+		this.title=title;
+		this.description=description;
+		this.crew=crew;
 	}
 
 	@Id
@@ -58,13 +63,7 @@ public class Show implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
+	
 
 
 
