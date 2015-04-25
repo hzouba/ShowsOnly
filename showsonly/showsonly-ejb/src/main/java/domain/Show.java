@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -18,17 +17,18 @@ public class Show implements Serializable {
 	private String title;
 	private String description;
 	private String crew;
-	
+
 	private static final long serialVersionUID = 1L;
 	private Event event;
-	private List<Performance> plays;
+	private List<Performance> performances;
+
 	@OneToMany(mappedBy = "show")
-	public List<Performance> getPlays() {
-		return plays;
+	public List<Performance> getPerformances() {
+		return performances;
 	}
 
-	public void setPlays(List<Performance> plays) {
-		this.plays = plays;
+	public void setPerformances(List<Performance> performances) {
+		this.performances = performances;
 	}
 
 	@ManyToOne
@@ -40,17 +40,15 @@ public class Show implements Serializable {
 		this.event = event;
 	}
 
-	
-
 	public Show() {
 		super();
 	}
 
 	public Show(String title, String description, String crew) {
 		super();
-		this.title=title;
-		this.description=description;
-		this.crew=crew;
+		this.title = title;
+		this.description = description;
+		this.crew = crew;
 	}
 
 	@Id
@@ -62,9 +60,5 @@ public class Show implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	
-
-
 
 }
