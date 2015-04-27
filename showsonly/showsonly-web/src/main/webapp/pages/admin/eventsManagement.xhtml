@@ -1,0 +1,69 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/template/template.xhtml">
+	<ui:define name="pageTitle">Events management</ui:define>
+	<ui:define name="pageContent">
+		<h2 class="heading heading--outcontainer heading--top">Events
+			management</h2>
+		<h:form id="form1">
+			<h:dataTable class="table table-striped"
+				value="#{adminEventsBean.events}" var="e">
+				<h:column id="column1">
+					<f:facet name="header">
+						<h:outputText value="ID" />
+					</f:facet>
+							#{e.id}
+						</h:column>
+				<h:column id="column2">
+					<f:facet name="header">
+						<h:outputText value="name"></h:outputText>
+					</f:facet>
+							#{e.name}
+						</h:column>
+				<h:column id="column3">
+					<f:facet name="header">
+						<h:outputText value="periode"></h:outputText>
+					</f:facet>
+							#{e.periode}
+				</h:column>
+				<h:column id="column4">
+					<f:facet name="header">
+						<h:outputText value="#"></h:outputText>
+					</f:facet>
+					<h:commandButton action="#{adminEventsBean.doSelect}"
+						value="select">
+						<f:setPropertyActionListener value="#{e}"
+							target="#{adminEventsBean.event}"></f:setPropertyActionListener>
+					</h:commandButton>
+
+					<h:commandButton
+						action="#{adminEventsBean.doDelete(adminEventsBean.event.id)}"
+						value="delete">
+						<f:setPropertyActionListener value="#{e}"
+							target="#{adminEventsBean.event}"></f:setPropertyActionListener>
+					</h:commandButton>
+				</h:column>
+			</h:dataTable>
+			<h:commandButton action="#{adminEventsBean.show}" value="display form" />
+		</h:form>
+
+		<h:form id="form2" rendered="#{adminEventsBean.visibility}">
+			<h:panelGrid columns="2">
+				<h:outputText value="name" />
+				<h:inputText value="#{adminEventsBean.event.name}" />
+				<h:outputText value="periode" />
+				<h:inputText value="#{adminEventsBean.event.periode}" />
+			</h:panelGrid>
+			<h:commandButton action="#{adminEventsBean.doAddEvent()}"
+				value="Save Or Update" />
+
+		</h:form>
+	</ui:define>
+	<ui:define name="mainNav">
+		<ui:include src="/pages/admin/mainNavAdmin.xhtml" />
+	</ui:define>
+</ui:composition>
+
