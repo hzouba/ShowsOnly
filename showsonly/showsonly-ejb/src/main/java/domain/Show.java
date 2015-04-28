@@ -61,4 +61,28 @@ public class Show implements Serializable {
 		this.id = id;
 	}
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getCrew() {
+		return crew;
+	}
+
+	public void setCrew(String crew) {
+		this.crew = crew;
+	}
+
 }
