@@ -12,9 +12,14 @@ import domain.Event;
 @ManagedBean
 @SessionScoped
 public class AdminEventsBean {
-	private boolean visibility = false;
+	private boolean visibilityadd = false;
+	private boolean visibilityupdate = false;
 	private List<Event> events;
 	private Event event = new Event();
+	private Event eventSeleted = new Event();
+
+	@EJB
+	private EventManagementLocal eventmanagementlocal;
 
 	public Event getEvent() {
 		return event;
@@ -22,17 +27,6 @@ public class AdminEventsBean {
 
 	public void setEvent(Event event) {
 		this.event = event;
-	}
-
-	@EJB
-	private EventManagementLocal eventmanagementlocal;
-
-	public boolean isVisibility() {
-		return visibility;
-	}
-
-	public void setVisibility(boolean visibility) {
-		this.visibility = visibility;
 	}
 
 	public List<Event> getEvents() {
@@ -44,25 +38,60 @@ public class AdminEventsBean {
 		this.events = events;
 	}
 
-	public String doSelect() {
-		visibility = true;
+	public String doEdit() {
+		visibilityupdate = true;
+		visibilityadd = false;
 		return "";
 	}
-	
-	public String doDelete(int id){
+
+	public String doDelete(int id) {
 		eventmanagementlocal.deleteEvent(id);
+		visibilityupdate = false;
+		visibilityadd = false;
 		return "";
 	}
 
 	public String doAddEvent() {
 		eventmanagementlocal.addEvent(event);
-		visibility = false;
+		visibilityadd = false;
+		return "";
+	}
+
+	public String doUpdateEvent() {
+		eventmanagementlocal.updateEvent(eventSeleted);
+		visibilityupdate = false;
+		visibilityadd = false;
 		return "";
 	}
 
 	public String show() {
-		visibility = true;
+		visibilityadd = true;
+		visibilityupdate = false;
 		return "";
+	}
+
+	public boolean isVisibilityadd() {
+		return visibilityadd;
+	}
+
+	public void setVisibilityadd(boolean visibilityadd) {
+		this.visibilityadd = visibilityadd;
+	}
+
+	public boolean isVisibilityupdate() {
+		return visibilityupdate;
+	}
+
+	public void setVisibilityupdate(boolean visibilityupdate) {
+		this.visibilityupdate = visibilityupdate;
+	}
+
+	public Event getEventSeleted() {
+		return eventSeleted;
+	}
+
+	public void setEventSeleted(Event eventSeleted) {
+		this.eventSeleted = eventSeleted;
 	}
 
 }

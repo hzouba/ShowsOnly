@@ -6,8 +6,8 @@
 	template="/template/template.xhtml">
 	<ui:define name="pageTitle">Events management</ui:define>
 	<ui:define name="pageContent">
-		<h2 class="heading heading--outcontainer heading--top">Events
-			management</h2>
+
+		<h2 class="page-heading heading--outcontainer">Events management</h2>
 		<h:form id="form1">
 			<h:dataTable class="table table-striped"
 				value="#{adminEventsBean.events}" var="e">
@@ -33,34 +33,69 @@
 					<f:facet name="header">
 						<h:outputText value="#"></h:outputText>
 					</f:facet>
-					<h:commandButton action="#{adminEventsBean.doSelect}"
-						value="select">
+					<h:commandButton action="#{adminEventsBean.doEdit()}"
+						value="select" class="edit_btn" title="Edit">
 						<f:setPropertyActionListener value="#{e}"
-							target="#{adminEventsBean.event}"></f:setPropertyActionListener>
+							target="#{adminEventsBean.eventSeleted}"></f:setPropertyActionListener>
 					</h:commandButton>
 
 					<h:commandButton
-						action="#{adminEventsBean.doDelete(adminEventsBean.event.id)}"
-						value="delete">
+						action="#{adminEventsBean.doDelete(adminEventsBean.eventSeleted.id)}"
+						value="delete" class="delete_btn" title="Delete">
 						<f:setPropertyActionListener value="#{e}"
-							target="#{adminEventsBean.event}"></f:setPropertyActionListener>
+							target="#{adminEventsBean.eventSeleted}"></f:setPropertyActionListener>
 					</h:commandButton>
 				</h:column>
 			</h:dataTable>
-			<h:commandButton action="#{adminEventsBean.show}" value="display form" />
+			<h:commandButton action="#{adminEventsBean.show()}"
+				value="Add a new event" class="btn btn-md btn--success" />
 		</h:form>
 
-		<h:form id="form2" rendered="#{adminEventsBean.visibility}">
-			<h:panelGrid columns="2">
-				<h:outputText value="name" />
-				<h:inputText value="#{adminEventsBean.event.name}" />
-				<h:outputText value="periode" />
-				<h:inputText value="#{adminEventsBean.event.periode}" />
-			</h:panelGrid>
-			<h:commandButton action="#{adminEventsBean.doAddEvent()}"
-				value="Save Or Update" />
+		<h:form id="form2" class="custom_form"
+			rendered="#{adminEventsBean.visibilityadd}">
+			<div class="contact-form-wrapper">
+				<div class="col-sm-4">
+					<h2>Add a new event</h2>
+					<div class="form-group">
+						<label>Name</label>
+						<h:inputText value="#{adminEventsBean.event.name}"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<label>Period</label>
+						<h:inputText value="#{adminEventsBean.event.periode}"
+							class="form-control" />
+					</div>
 
+					<h:commandButton action="#{adminEventsBean.doAddEvent()}"
+						value="Save" class="btn btn-md btn--danger" />
+				</div>
+			</div>
 		</h:form>
+
+
+		<h:form id="form3" class="custom_form"
+			rendered="#{adminEventsBean.visibilityupdate}">
+			<div class="contact-form-wrapper">
+				<div class="col-sm-4">
+					<h2>Edit an event</h2>
+					<div class="form-group">
+						<label>Name</label>
+						<h:inputText value="#{adminEventsBean.eventSeleted.name}"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<label>Period</label>
+						<h:inputText value="#{adminEventsBean.eventSeleted.periode}"
+							class="form-control" />
+					</div>
+
+					<h:commandButton action="#{adminEventsBean.doUpdateEvent()}"
+						value="Update" class="btn btn-md btn--danger" />
+				</div>
+			</div>
+		</h:form>
+
 	</ui:define>
 	<ui:define name="mainNav">
 		<ui:include src="/pages/admin/mainNavAdmin.xhtml" />
