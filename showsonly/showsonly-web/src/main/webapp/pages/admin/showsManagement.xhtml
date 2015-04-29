@@ -1,0 +1,142 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/template/template.xhtml">
+	<ui:define name="pageTitle">Shows management</ui:define>
+	<ui:define name="pageContent">
+
+		<h2 class="page-heading heading--outcontainer">Shows management</h2>
+		<h:form id="form1">
+			<h:dataTable class="table table-striped"
+				value="#{adminShowBean.shows}" var="s">
+				<h:column id="column1">
+					<f:facet name="header">
+						<h:outputText value="ID" />
+					</f:facet>
+							#{s.id}
+						</h:column>
+				<h:column id="column2">
+					<f:facet name="header">
+						<h:outputText value="Title"></h:outputText>
+					</f:facet>
+							#{s.title}
+						</h:column>
+				<h:column id="column3">
+					<f:facet name="header">
+						<h:outputText value="Description"></h:outputText>
+					</f:facet>
+							#{s.description}
+				</h:column>
+				<h:column id="column4">
+					<f:facet name="header">
+						<h:outputText value="Crew"></h:outputText>
+					</f:facet>
+							#{s.crew}
+				</h:column>
+				<h:column id="column5">
+					<f:facet name="header">
+						<h:outputText value="Event"></h:outputText>
+					</f:facet>
+							#{s.event.name}
+				</h:column>
+				<h:column id="column6">
+					<f:facet name="header">
+						<h:outputText value="#"></h:outputText>
+					</f:facet>
+					<h:commandButton action="#{adminShowBean.doEditShow()}"
+						value="select" class="edit_btn" title="Edit">
+						<f:setPropertyActionListener value="#{s}"
+							target="#{adminShowBean.showSelected}"></f:setPropertyActionListener>
+					</h:commandButton>
+
+					<h:commandButton
+						action="#{adminShowBean.doDeleteShow(adminShowBean.showSelected.id)}"
+						value="delete" class="delete_btn" title="Delete">
+						<f:setPropertyActionListener value="#{s}"
+							target="#{adminShowBean.showSelected}"></f:setPropertyActionListener>
+					</h:commandButton>
+				</h:column>
+
+			</h:dataTable>
+			<h:commandButton action="#{adminShowBean.showAddShow()}"
+				value="Add a new show" class="btn btn-md btn--success" />
+		</h:form>
+
+		<h:form id="form2" class="custom_form"
+			rendered="#{adminShowBean.visibilityadd}">
+			<div class="contact-form-wrapper">
+				<div class="col-sm-4">
+					<h2>Add a new show</h2>
+					<div class="form-group">
+						<label>Title</label>
+						<h:inputText value="#{adminShowBean.show.title}"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<label>Description</label>
+						<h:inputTextarea value="#{adminShowBean.show.description}"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<label>Crew</label>
+						<h:inputText value="#{adminShowBean.show.crew}"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<label>Events</label>
+						<h:selectOneMenu class="form-control" value="#{adminShowBean.event}">
+							<f:selectItem itemLabel="please select an event" />
+							<f:selectItems value="#{adminShowBean.events}" var="e"
+								itemLabel="#{e.name}" itemValue="#{e}"></f:selectItems>
+						</h:selectOneMenu>
+					</div>
+
+					<h:commandButton action="#{adminShowBean.doAddShow()}" value="Save"
+						class="btn btn-md btn--danger" />
+				</div>
+			</div>
+		</h:form>
+
+		<h:form id="form3" class="custom_form"
+			rendered="#{adminShowBean.visibilityupdate}">
+			<div class="contact-form-wrapper">
+				<div class="col-sm-4">
+					<h2>Edit a show</h2>
+					<div class="form-group">
+						<label>Title</label>
+						<h:inputText value="#{adminShowBean.showSelected.title}"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<label>Description</label>
+						<h:inputText value="#{adminShowBean.showSelected.description}"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<label>Crew</label>
+						<h:inputText value="#{adminShowBean.showSelected.crew}"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<label>Events</label>
+						<h:selectOneMenu class="form-control" value="#{adminShowBean.eventSelected}">
+							<f:selectItem itemLabel="please select an event" />
+							<f:selectItems value="#{adminShowBean.events}" var="e"
+								itemLabel="#{e.name}" itemValue="#{e}"></f:selectItems>
+						</h:selectOneMenu>
+					</div>
+
+					<h:commandButton action="#{adminShowBean.doUpdateShow()}"
+						value="Update" class="btn btn-md btn--danger" />
+				</div>
+			</div>
+		</h:form>
+
+	</ui:define>
+	<ui:define name="mainNav">
+		<ui:include src="/pages/admin/mainNavAdmin.xhtml" />
+	</ui:define>
+</ui:composition>
+
