@@ -88,7 +88,7 @@ public class AdminTheatresBean {
 	}
 
 	public String doUpdateTheatre() {
-		theatermanagementlocal.updateTheater(theatre);
+		theatermanagementlocal.updateTheater(theatreSelected);
 		visibilityupdate = false;
 		visibilityadd = false;
 		return "";

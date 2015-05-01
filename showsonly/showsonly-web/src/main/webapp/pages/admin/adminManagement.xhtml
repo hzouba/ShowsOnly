@@ -4,13 +4,13 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	template="/template/template.xhtml">
-	<ui:define name="pageTitle">Users management</ui:define>
+	<ui:define name="pageTitle">Admin management</ui:define>
 	<ui:define name="pageContent">
 
-		<h2 class="page-heading heading--outcontainer">Users management</h2>
+		<h2 class="page-heading heading--outcontainer">Admin management</h2>
 		<h:form id="form1">
 			<h:dataTable class="table table-striped"
-				value="#{adminUserBean.users}" var="u">
+				value="#{adminUserBean.admins}" var="u">
 				<h:column id="column1">
 					<f:facet name="header">
 						<h:outputText value="ID" />
@@ -36,77 +36,77 @@
 					<h:commandButton action="#{adminUserBean.doEditUser()}"
 						value="select" class="edit_btn" title="Edit">
 						<f:setPropertyActionListener value="#{u}"
-							target="#{adminUserBean.userSelected}"></f:setPropertyActionListener>
+							target="#{adminUserBean.adminSelected}"></f:setPropertyActionListener>
 					</h:commandButton>
 
 					<h:commandButton
-						action="#{adminUserBean.doDeleteUser(adminUserBean.userSelected.id)}"
+						action="#{adminUserBean.doDeleteUser(adminUserBean.adminSelected.id)}"
 						value="delete" class="delete_btn" title="Delete">
 						<f:setPropertyActionListener value="#{u}"
-							target="#{adminUserBean.userSelected}"></f:setPropertyActionListener>
+							target="#{adminUserBean.adminSelected}"></f:setPropertyActionListener>
 					</h:commandButton>
 				</h:column>
 			</h:dataTable>
 			<h:commandButton action="#{adminUserBean.showAddUser()}"
-				value="Add a new user" class="btn btn-md btn--success" />
+				value="Add a new admin" class="btn btn-md btn--success" />
 		</h:form>
 
 		<h:form id="form2" class="custom_form"
 			rendered="#{adminUserBean.visibilityadd}">
 			<div class="contact-form-wrapper">
 				<div class="col-sm-4">
-					<h2>Add a new user</h2>
+					<h2>Add a new admin</h2>
 					<div class="form-group">
 						<label>Name</label>
-						<h:inputText value="#{adminUserBean.user.name}"
+						<h:inputText value="#{adminUserBean.admin.name}"
 							class="form-control" />
 					</div>
 					<div class="form-group">
 						<label>Login</label>
-						<h:inputText value="#{adminUserBean.user.login}"
+						<h:inputText value="#{adminUserBean.admin.login}"
 							class="form-control" />
 					</div>
 					<div class="form-group">
 						<label>Password</label>
-						<h:inputSecret value="#{adminUserBean.user.password}"
+						<h:inputSecret value="#{adminUserBean.admin.password}"
 							class="form-control" />
 					</div>
 
-					<h:commandButton action="#{adminUserBean.doAddUser()}"
-						value="Save" class="btn btn-md btn--danger" />
+					<h:commandButton action="#{adminUserBean.doAddAdmin()}" value="Save"
+						class="btn btn-md btn--danger" />
 				</div>
 			</div>
 		</h:form>
-		
+
 		<h:form id="form3" class="custom_form"
 			rendered="#{adminUserBean.visibilityupdate}">
 			<div class="contact-form-wrapper">
 				<div class="col-sm-4">
-					<h2>Edit a user</h2>
+					<h2>Edit a admin</h2>
 					<div class="form-group">
 						<label>Name</label>
-						<h:inputText value="#{adminUserBean.userSelected.name}"
+						<h:inputText value="#{adminUserBean.adminSelected.name}"
 							class="form-control" />
 					</div>
 					<div class="form-group">
 						<label>Login</label>
-						<h:inputText value="#{adminUserBean.userSelected.login}"
+						<h:inputText value="#{adminUserBean.adminSelected.login}"
 							class="form-control" />
 					</div>
 					<div class="form-group">
 						<label>Password</label>
-						<h:inputSecret value="#{adminUserBean.userSelected.password}"
+						<h:inputSecret value="#{adminUserBean.adminSelected.password}"
 							class="form-control" />
 					</div>
 
-					<h:commandButton action="#{adminUserBean.doUpdateUser()}"
+					<h:commandButton action="#{adminUserBean.doUpdateAdmin()}"
 						value="Update" class="btn btn-md btn--danger" />
 				</div>
 			</div>
 		</h:form>
-		
-		
-		
+
+
+
 	</ui:define>
 	<ui:define name="mainNav">
 		<ui:include src="/pages/admin/mainNavAdmin.xhtml" />

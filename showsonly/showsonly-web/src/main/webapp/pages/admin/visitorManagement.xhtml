@@ -1,0 +1,115 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/template/template.xhtml">
+	<ui:define name="pageTitle">Visitor management</ui:define>
+	<ui:define name="pageContent">
+
+		<h2 class="page-heading heading--outcontainer">Visitor management</h2>
+		<h:form id="form1">
+			<h:dataTable class="table table-striped"
+				value="#{adminUserBean.visitors}" var="u">
+				<h:column id="column1">
+					<f:facet name="header">
+						<h:outputText value="ID" />
+					</f:facet>
+								#{u.id}
+							</h:column>
+				<h:column id="column2">
+					<f:facet name="header">
+						<h:outputText value="name"></h:outputText>
+					</f:facet>
+								#{u.name}
+							</h:column>
+				<h:column id="column3">
+					<f:facet name="header">
+						<h:outputText value="login"></h:outputText>
+					</f:facet>
+								#{u.login}
+					</h:column>
+				<h:column id="column4">
+					<f:facet name="header">
+						<h:outputText value="#"></h:outputText>
+					</f:facet>
+					<h:commandButton action="#{adminUserBean.doEditUser()}"
+						value="select" class="edit_btn" title="Edit">
+						<f:setPropertyActionListener value="#{u}"
+							target="#{adminUserBean.visitorSelected}"></f:setPropertyActionListener>
+					</h:commandButton>
+
+					<h:commandButton
+						action="#{adminUserBean.doDeleteUser(adminUserBean.visitorSelected.id)}"
+						value="delete" class="delete_btn" title="Delete">
+						<f:setPropertyActionListener value="#{u}"
+							target="#{adminUserBean.visitorSelected}"></f:setPropertyActionListener>
+					</h:commandButton>
+				</h:column>
+			</h:dataTable>
+			<h:commandButton action="#{adminUserBean.showAddUser()}"
+				value="Add a new visitor" class="btn btn-md btn--success" />
+		</h:form>
+
+		<h:form id="form2" class="custom_form"
+			rendered="#{adminUserBean.visibilityadd}">
+			<div class="contact-form-wrapper">
+				<div class="col-sm-4">
+					<h2>Add a new visitor</h2>
+					<div class="form-group">
+						<label>Name</label>
+						<h:inputText value="#{adminUserBean.visitor.name}"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<label>Login</label>
+						<h:inputText value="#{adminUserBean.visitor.login}"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<label>Password</label>
+						<h:inputSecret value="#{adminUserBean.visitor.password}"
+							class="form-control" />
+					</div>
+
+					<h:commandButton action="#{adminUserBean.doAddVisitor()}"
+						value="Save" class="btn btn-md btn--danger" />
+				</div>
+			</div>
+		</h:form>
+		
+		<h:form id="form3" class="custom_form"
+			rendered="#{adminUserBean.visibilityupdate}">
+			<div class="contact-form-wrapper">
+				<div class="col-sm-4">
+					<h2>Edit a visitor</h2>
+					<div class="form-group">
+						<label>Name</label>
+						<h:inputText value="#{adminUserBean.visitorSelected.name}"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<label>Login</label>
+						<h:inputText value="#{adminUserBean.visitorSelected.login}"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<label>Password</label>
+						<h:inputSecret value="#{adminUserBean.visitorSelected.password}"
+							class="form-control" />
+					</div>
+
+					<h:commandButton action="#{adminUserBean.doUpdateVisitor()}"
+						value="Update" class="btn btn-md btn--danger" />
+				</div>
+			</div>
+		</h:form>
+		
+		
+		
+	</ui:define>
+	<ui:define name="mainNav">
+		<ui:include src="/pages/admin/mainNavAdmin.xhtml" />
+	</ui:define>
+</ui:composition>
+

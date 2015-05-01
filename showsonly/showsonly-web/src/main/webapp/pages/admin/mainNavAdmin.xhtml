@@ -29,7 +29,16 @@
                             <h:link value="Theatres management" outcome="theatresManagement"></h:link>
                         </li>
                         <li>
-                            <h:link value="Users management" outcome="usersManagement"></h:link>
+                            <span class="sub-nav-toggle plus"></span>
+                            <a href="#">Users management</a>
+                            <ul>
+		                        <li class="menu__nav-item">
+		                            <h:link value="Admin management" outcome="adminManagement"></h:link>
+		                        </li>
+		                        <li class="menu__nav-item">
+		                            <h:link value="Visitor management" outcome="visitorManagement"></h:link>
+		                        </li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>

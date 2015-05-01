@@ -7,7 +7,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import services.interfaces.AccountManagementLocal;
+import domain.Admin;
 import domain.User;
+import domain.Visitor;
 
 @ManagedBean
 @SessionScoped
@@ -15,7 +17,13 @@ public class AdminUserBean {
 	private boolean visibilityadd = false;
 	private boolean visibilityupdate = false;
 	private List<User> users;
+	private List<Admin> admins;
+	private List<Visitor> visitors;
 	private User user = new User();
+	private Admin admin = new Admin();
+	private Visitor visitor = new Visitor();
+	private Admin adminSelected = new Admin();
+	private Visitor visitorSelected = new Visitor();
 	private User userSelected = new User();
 
 	@EJB
@@ -75,14 +83,27 @@ public class AdminUserBean {
 		return "";
 	}
 
-	public String doAddUser() {
-		accountmanagementlocal.addUser(user);
+	public String doAddAdmin() {
+		accountmanagementlocal.addUser(admin);
 		visibilityadd = false;
 		return "";
 	}
 
-	public String doUpdateUser() {
-		accountmanagementlocal.updateUser(userSelected);
+	public String doAddVisitor() {
+		accountmanagementlocal.addUser(visitor);
+		visibilityadd = false;
+		return "";
+	}
+
+	public String doUpdateAdmin() {
+		accountmanagementlocal.updateAdmin(adminSelected);
+		visibilityupdate = false;
+		visibilityadd = false;
+		return "";
+	}
+
+	public String doUpdateVisitor() {
+		accountmanagementlocal.updateVisitor(visitorSelected);
 		visibilityupdate = false;
 		visibilityadd = false;
 		return "";
@@ -92,6 +113,56 @@ public class AdminUserBean {
 		visibilityadd = true;
 		visibilityupdate = false;
 		return "";
+	}
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+
+	public Visitor getVisitor() {
+		return visitor;
+	}
+
+	public void setVisitor(Visitor visitor) {
+		this.visitor = visitor;
+	}
+
+	public Admin getAdminSelected() {
+		return adminSelected;
+	}
+
+	public void setAdminSelected(Admin adminSelected) {
+		this.adminSelected = adminSelected;
+	}
+
+	public Visitor getVisitorSelected() {
+		return visitorSelected;
+	}
+
+	public void setVisitorSelected(Visitor visitorSelected) {
+		this.visitorSelected = visitorSelected;
+	}
+
+	public List<Admin> getAdmins() {
+		admins =  accountmanagementlocal.findAllAdmins();
+		return admins;
+	}
+
+	public void setAdmins(List<Admin> admins) {
+		this.admins = admins;
+	}
+
+	public List<Visitor> getVisitors() {
+		visitors =  accountmanagementlocal.findAllVisitors();
+		return visitors;
+	}
+
+	public void setVisitors(List<Visitor> visitors) {
+		this.visitors = visitors;
 	}
 
 }

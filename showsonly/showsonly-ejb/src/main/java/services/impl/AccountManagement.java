@@ -9,7 +9,9 @@ import javax.persistence.Query;
 
 import services.interfaces.AccountManagementLocal;
 import services.interfaces.AccountManagementRemote;
+import domain.Admin;
 import domain.User;
+import domain.Visitor;
 
 /**
  * Session Bean implementation class AccountManagement
@@ -91,8 +93,52 @@ public class AccountManagement implements AccountManagementRemote,
 		return user;
 	}
 
-	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Admin> findAllAdmins() {
+		List<Admin> admins = null;
+		try {
+			String jpql = "select a from Admin a";
+			Query query = entityManager.createQuery(jpql);
+			admins = query.getResultList();
+		} catch (Exception e) {
+		}
+		return admins;
+	}
 
-	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Visitor> findAllVisitors() {
+		List<Visitor> visitors = null;
+		try {
+			String jpql = "select v from Visitor v";
+			Query query = entityManager.createQuery(jpql);
+			visitors = query.getResultList();
+		} catch (Exception e) {
+		}
+		return visitors;
+	}
+
+	@Override
+	public Boolean updateAdmin(Admin admin) {
+		Boolean b = false;
+		try {
+			entityManager.merge(admin);
+			b = true;
+		} catch (Exception e) {
+		}
+		return b;
+	}
+
+	@Override
+	public Boolean updateVisitor(Visitor visitor) {
+		Boolean b = false;
+		try {
+			entityManager.merge(visitor);
+			b = true;
+		} catch (Exception e) {
+		}
+		return b;
+	}
 
 }
