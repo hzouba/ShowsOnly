@@ -81,4 +81,12 @@ public class EventManagement implements EventManagementRemote,
 		return events;
 	}
 
+	@Override
+	public Event findEventByName(String name) {
+		return entityManager
+				.createQuery("select e from Event e where e.name=:param1",
+						Event.class).setParameter("param1", name)
+				.getSingleResult();
+	}
+
 }

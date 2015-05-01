@@ -1,0 +1,118 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/template/template.xhtml">
+	<ui:define name="pageTitle">Theatres management</ui:define>
+	<ui:define name="pageContent">
+
+		<h2 class="page-heading heading--outcontainer">Theatres management</h2>
+		<h:form id="form1">
+			<h:dataTable class="table table-striped"
+				value="#{adminTheatresBean.theatres}" var="t">
+				<h:column id="column1">
+					<f:facet name="header">
+						<h:outputText value="ID" />
+					</f:facet>
+							#{t.id}
+						</h:column>
+				<h:column id="column2">
+					<f:facet name="header">
+						<h:outputText value="Address"></h:outputText>
+					</f:facet>
+							#{t.adresse}
+						</h:column>
+				<h:column id="column3">
+					<f:facet name="header">
+						<h:outputText value="Name"></h:outputText>
+					</f:facet>
+							#{t.name}
+				</h:column>
+				<h:column id="column4">
+					<f:facet name="header">
+						<h:outputText value="Nomber de place"></h:outputText>
+					</f:facet>
+							#{t.nbMaxPerson}
+				</h:column>
+				<h:column id="column5">
+					<f:facet name="header">
+						<h:outputText value="#"></h:outputText>
+					</f:facet>
+					<h:commandButton action="#{adminTheatresBean.doEditTheatre()}"
+						value="select" class="edit_btn" title="Edit">
+						<f:setPropertyActionListener value="#{t}"
+							target="#{adminTheatresBean.theatreSelected}"></f:setPropertyActionListener>
+					</h:commandButton>
+
+					<h:commandButton
+						action="#{adminTheatresBean.doDeleteTheatre(adminTheatresBean.theatreSelected.id)}"
+						value="delete" class="delete_btn" title="Delete">
+						<f:setPropertyActionListener value="#{t}"
+							target="#{adminTheatresBean.theatreSelected}"></f:setPropertyActionListener>
+					</h:commandButton>
+				</h:column>
+
+			</h:dataTable>
+			<h:commandButton action="#{adminTheatresBean.showAddTheatre()}"
+				value="Add a new theater" class="btn btn-md btn--success" />
+		</h:form>
+
+		<h:form id="form2" class="custom_form"
+			rendered="#{adminTheatresBean.visibilityadd}">
+			<div class="contact-form-wrapper">
+				<div class="col-sm-4">
+					<h2>Add a new theater</h2>
+					<div class="form-group">
+						<label>Name</label>
+						<h:inputText value="#{adminTheatresBean.theatre.name}"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<label>Address</label>
+						<h:inputTextarea value="#{adminTheatresBean.theatre.adresse}"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<label>Nombre de place</label>
+						<h:inputText value="#{adminTheatresBean.theatre.nbMaxPerson}"
+							class="form-control" />
+					</div>
+					<h:commandButton action="#{adminTheatresBean.doAddTheatre()}" value="Save"
+						class="btn btn-md btn--danger" />
+				</div>
+			</div>
+		</h:form>
+
+		<h:form id="form3" class="custom_form"
+			rendered="#{adminTheatresBean.visibilityupdate}">
+			<div class="contact-form-wrapper">
+				<div class="col-sm-4">
+					<h2>Edit a theater</h2>
+					<div class="form-group">
+						<label>Name</label>
+						<h:inputText value="#{adminTheatresBean.theatreSelected.name}"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<label>Address</label>
+						<h:inputText value="#{adminTheatresBean.theatreSelected.adresse}"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<label>Nombre de place</label>
+						<h:inputText value="#{adminTheatresBean.theatreSelected.nbMaxPerson}"
+							class="form-control" />
+					</div>
+					<h:commandButton action="#{adminTheatresBean.doUpdateTheatre()}"
+						value="Update" class="btn btn-md btn--danger" />
+				</div>
+			</div>
+		</h:form>
+
+	</ui:define>
+	<ui:define name="mainNav">
+		<ui:include src="/pages/admin/mainNavAdmin.xhtml" />
+	</ui:define>
+</ui:composition>
+

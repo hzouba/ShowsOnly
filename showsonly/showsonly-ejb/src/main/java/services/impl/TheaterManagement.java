@@ -7,14 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import services.interfaces.EventManagementLocal;
-import services.interfaces.EventManagementRemote;
-import services.interfaces.ShowManagementLocal;
-import services.interfaces.ShowManagementRemote;
 import services.interfaces.TheaterManagementLocal;
 import services.interfaces.TheaterManagementRemote;
 import domain.Event;
-import domain.Show;
 import domain.Theater;
 
 /**
@@ -31,15 +26,6 @@ public class TheaterManagement implements TheaterManagementRemote,
 	 */
 	public TheaterManagement() {
 	}
-
-	
-
-	
-
-
-
-	@SuppressWarnings("unchecked")
-
 
 	@Override
 	public Boolean addTheater(Theater theater) {
@@ -80,6 +66,7 @@ public class TheaterManagement implements TheaterManagementRemote,
 		return b;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Theater> findAllTheaters() {
 		List<Theater> theaters = null;
@@ -90,6 +77,14 @@ public class TheaterManagement implements TheaterManagementRemote,
 		} catch (Exception e) {
 		}
 		return theaters;
+	}
+
+	@Override
+	public Theater findTheaterByName(String name) {
+		return entityManager
+				.createQuery("select t from Theater t where t.name=:param1",
+						Theater.class).setParameter("param1", name)
+				.getSingleResult();
 	}
 
 }

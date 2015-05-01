@@ -5,7 +5,6 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import domain.Event;
-import domain.User;
 
 @Remote
 public interface EventManagementRemote {
@@ -13,14 +12,12 @@ public interface EventManagementRemote {
 
 	Event findEventById(Integer id);
 
+	Event findEventByName(String name);
+
 	Boolean deleteEvent(Integer id);
 
 	Boolean updateEvent(Event event);
 
 	List<Event> findAllEvents();
-
-	
-	
-	
 
 }

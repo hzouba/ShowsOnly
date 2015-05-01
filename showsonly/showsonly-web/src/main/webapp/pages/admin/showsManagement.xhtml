@@ -86,7 +86,8 @@
 					</div>
 					<div class="form-group">
 						<label>Events</label>
-						<h:selectOneMenu class="form-control" value="#{adminShowBean.event}">
+						<h:selectOneMenu class="form-control"
+							value="#{adminShowBean.event}" converter="ec">
 							<f:selectItem itemLabel="please select an event" />
 							<f:selectItems value="#{adminShowBean.events}" var="e"
 								itemLabel="#{e.name}" itemValue="#{e}"></f:selectItems>
@@ -121,7 +122,8 @@
 					</div>
 					<div class="form-group">
 						<label>Events</label>
-						<h:selectOneMenu class="form-control" value="#{adminShowBean.eventSelected}">
+						<h:selectOneMenu class="form-control"
+							value="#{adminShowBean.eventSelected}">
 							<f:selectItem itemLabel="please select an event" />
 							<f:selectItems value="#{adminShowBean.events}" var="e"
 								itemLabel="#{e.name}" itemValue="#{e}"></f:selectItems>

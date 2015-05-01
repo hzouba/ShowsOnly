@@ -15,6 +15,8 @@ public interface TheaterManagementLocal {
 
 	Theater findTheaterById(Integer id);
 
+	Theater findTheaterByName(String name);
+
 	Boolean deleteTheater(Integer id);
 
 	Boolean updateTheater(Theater theater);

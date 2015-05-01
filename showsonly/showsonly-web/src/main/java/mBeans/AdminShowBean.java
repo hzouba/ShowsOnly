@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import services.interfaces.AssignmentManagementLocal;
+import services.interfaces.EventManagementLocal;
 import services.interfaces.ShowManagementLocal;
 import domain.Event;
 import domain.Show;
@@ -22,11 +23,14 @@ public class AdminShowBean {
 	private List<Event> events;
 	private Event event = new Event();
 	private Event eventSelected = new Event();
+	private List<Event> eventsSelected;
 
 	@EJB
 	private AssignmentManagementLocal assignmentmanagementlocal;
 	@EJB
 	private ShowManagementLocal showmanagementlocal;
+	@EJB
+	private EventManagementLocal eventmanagementlocal;
 
 	public boolean isVisibilityadd() {
 		return visibilityadd;
@@ -101,7 +105,12 @@ public class AdminShowBean {
 		return "";
 	}
 
+	public Event doFindEventByName(String name) {
+		return eventmanagementlocal.findEventByName(name);
+	}
+
 	public List<Event> getEvents() {
+		events = eventmanagementlocal.findAllEvents();
 		return events;
 	}
 
