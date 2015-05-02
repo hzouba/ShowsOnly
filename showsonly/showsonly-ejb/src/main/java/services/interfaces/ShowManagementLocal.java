@@ -6,13 +6,14 @@ import javax.ejb.Local;
 
 import domain.Show;
 
-
 @Local
 public interface ShowManagementLocal {
-	
+
 	Boolean addShow(Show show);
 
 	Show findShowById(Integer id);
+
+	Show findShowByName(String title);
 
 	Boolean deleteShow(Integer id);
 
@@ -20,5 +21,4 @@ public interface ShowManagementLocal {
 
 	List<Show> findAllShows();
 
-	
 }

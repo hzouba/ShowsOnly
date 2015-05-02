@@ -7,8 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import services.interfaces.EventManagementLocal;
-import services.interfaces.EventManagementRemote;
 import services.interfaces.ShowManagementLocal;
 import services.interfaces.ShowManagementRemote;
 import domain.Event;
@@ -33,7 +31,7 @@ public class ShowManagement implements ShowManagementRemote,
 	public Boolean addShow(Show show) {
 		Boolean b = false;
 		try {
-			entityManager.persist(show);
+			entityManager.merge(show);
 			b = true;
 		} catch (Exception e) {
 		}
@@ -79,6 +77,14 @@ public class ShowManagement implements ShowManagementRemote,
 		} catch (Exception e) {
 		}
 		return shows;
+	}
+
+	@Override
+	public Show findShowByName(String title) {
+		return entityManager
+				.createQuery("select s from Show s where s.title=:param1",
+						Show.class).setParameter("param1", title)
+				.getSingleResult();
 	}
 
 }

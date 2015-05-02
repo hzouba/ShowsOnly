@@ -31,7 +31,7 @@ public class EventManagement implements EventManagementRemote,
 		// TODO Auto-generated method stub
 		Boolean b = false;
 		try {
-			entityManager.persist(event);
+			entityManager.merge(event);
 			b = true;
 		} catch (Exception e) {
 		}

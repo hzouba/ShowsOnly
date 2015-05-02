@@ -62,6 +62,8 @@
 			</h:dataTable>
 			<h:commandButton action="#{adminShowBean.showAddShow()}"
 				value="Add a new show" class="btn btn-md btn--success" />
+			<h:commandButton action="#{adminShowBean.showAttachShow()}"
+				value="Attach shows to an event" class="btn btn-md btn--shine" />
 		</h:form>
 
 		<h:form id="form2" class="custom_form"
@@ -83,15 +85,6 @@
 						<label>Crew</label>
 						<h:inputText value="#{adminShowBean.show.crew}"
 							class="form-control" />
-					</div>
-					<div class="form-group">
-						<label>Events</label>
-						<h:selectOneMenu class="form-control"
-							value="#{adminShowBean.event}" converter="ec">
-							<f:selectItem itemLabel="please select an event" />
-							<f:selectItems value="#{adminShowBean.events}" var="e"
-								itemLabel="#{e.name}" itemValue="#{e}"></f:selectItems>
-						</h:selectOneMenu>
 					</div>
 
 					<h:commandButton action="#{adminShowBean.doAddShow()}" value="Save"
@@ -120,18 +113,40 @@
 						<h:inputText value="#{adminShowBean.showSelected.crew}"
 							class="form-control" />
 					</div>
+
+					<h:commandButton action="#{adminShowBean.doUpdateShow()}"
+						value="Update" class="btn btn-md btn--danger" />
+				</div>
+			</div>
+		</h:form>
+
+		<h:form id="form4" class="custom_form"
+			rendered="#{adminShowBean.visibilityattach}">
+			<div class="contact-form-wrapper">
+				<div class="col-sm-4">
+					<h2>Attach shows to an event</h2>
+
 					<div class="form-group">
 						<label>Events</label>
 						<h:selectOneMenu class="form-control"
-							value="#{adminShowBean.eventSelected}">
+							value="#{adminShowBean.eventSelectedAttach}" converter="ec">
 							<f:selectItem itemLabel="please select an event" />
 							<f:selectItems value="#{adminShowBean.events}" var="e"
 								itemLabel="#{e.name}" itemValue="#{e}"></f:selectItems>
 						</h:selectOneMenu>
 					</div>
 
-					<h:commandButton action="#{adminShowBean.doUpdateShow()}"
-						value="Update" class="btn btn-md btn--danger" />
+					<div class="form-group">
+						<label>Shows</label>
+						<h:selectManyMenu class="form-control"
+							value="#{adminShowBean.showSelectedAttach}" converter="sc">
+							<f:selectItems value="#{adminShowBean.showsSelectedAttach}" var="sh"
+								itemLabel="#{sh.title}" itemValue="#{sh}"></f:selectItems>
+						</h:selectManyMenu>
+					</div>
+
+					<h:commandButton action="#{adminShowBean.doAssignShowToEvent()}"
+						value="Save" class="btn btn-md btn--danger" />
 				</div>
 			</div>
 		</h:form>

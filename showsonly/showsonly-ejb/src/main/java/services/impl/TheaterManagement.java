@@ -31,7 +31,7 @@ public class TheaterManagement implements TheaterManagementRemote,
 	public Boolean addTheater(Theater theater) {
 		Boolean b = false;
 		try {
-			entityManager.persist(theater);
+			entityManager.merge(theater);
 			b = true;
 		} catch (Exception e) {
 		}

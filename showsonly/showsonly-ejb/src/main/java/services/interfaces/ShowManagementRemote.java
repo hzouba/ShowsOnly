@@ -4,9 +4,7 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
-import domain.Event;
 import domain.Show;
-import domain.User;
 
 @Remote
 public interface ShowManagementRemote {
@@ -14,13 +12,12 @@ public interface ShowManagementRemote {
 
 	Show findShowById(Integer id);
 
+	Show findShowByName(String title);
+
 	Boolean deleteShow(Integer id);
 
 	Boolean updateShow(Show show);
 
 	List<Show> findAllShows();
-	
-	
-	
 
 }

@@ -32,7 +32,7 @@ public class AccountManagement implements AccountManagementRemote,
 	public Boolean addUser(User user) {
 		Boolean b = false;
 		try {
-			entityManager.persist(user);
+			entityManager.merge(user);
 			b = true;
 		} catch (Exception e) {
 		}

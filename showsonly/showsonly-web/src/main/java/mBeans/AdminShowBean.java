@@ -17,12 +17,16 @@ import domain.Show;
 public class AdminShowBean {
 	private boolean visibilityadd = false;
 	private boolean visibilityupdate = false;
+	private boolean visibilityattach = false;
 	private List<Show> shows;
+	private List<Show> showsSelectedAttach;
 	private Show show = new Show();
 	private Show showSelected = new Show();
+	private Show showSelectedAttach = new Show();
 	private List<Event> events;
 	private Event event = new Event();
 	private Event eventSelected = new Event();
+	private Event eventSelectedAttach = new Event();
 	private List<Event> eventsSelected;
 
 	@EJB
@@ -76,6 +80,7 @@ public class AdminShowBean {
 	public String doEditShow() {
 		visibilityupdate = true;
 		visibilityadd = false;
+		visibilityattach = false;
 		return "";
 	}
 
@@ -83,11 +88,12 @@ public class AdminShowBean {
 		showmanagementlocal.deleteShow(id);
 		visibilityupdate = false;
 		visibilityadd = false;
+		visibilityattach = false;
 		return "";
 	}
 
 	public String doAddShow() {
-		showmanagementlocal.addShow(show);
+		showmanagementlocal.addShow(show);		
 		visibilityadd = false;
 		return "";
 	}
@@ -96,17 +102,38 @@ public class AdminShowBean {
 		showmanagementlocal.updateShow(showSelected);
 		visibilityupdate = false;
 		visibilityadd = false;
+		visibilityattach = false;
 		return "";
 	}
 
 	public String showAddShow() {
 		visibilityadd = true;
 		visibilityupdate = false;
+		visibilityattach = false;
+		return "";
+	}
+
+	public String showAttachShow() {
+		visibilityadd = false;
+		visibilityupdate = false;
+		visibilityattach = true;
+		return "";
+	}
+
+	public String doAssignShowToEvent() {
+		for (Show s : showsSelectedAttach) {
+			assignmentmanagementlocal.assignShowToEvent(s.getId(),
+					eventSelectedAttach.getId());
+		}
 		return "";
 	}
 
 	public Event doFindEventByName(String name) {
 		return eventmanagementlocal.findEventByName(name);
+	}
+
+	public Show doFindShowtByName(String title) {
+		return showmanagementlocal.findShowByName(title);
 	}
 
 	public List<Event> getEvents() {
@@ -132,6 +159,47 @@ public class AdminShowBean {
 
 	public void setEventSelected(Event eventSelected) {
 		this.eventSelected = eventSelected;
+	}
+
+	public List<Event> getEventsSelected() {
+		return eventsSelected;
+	}
+
+	public void setEventsSelected(List<Event> eventsSelected) {
+		this.eventsSelected = eventsSelected;
+	}
+
+	public boolean isVisibilityattach() {
+		return visibilityattach;
+	}
+
+	public void setVisibilityattach(boolean visibilityattach) {
+		this.visibilityattach = visibilityattach;
+	}
+
+	public Event getEventSelectedAttach() {
+		return eventSelectedAttach;
+	}
+
+	public void setEventSelectedAttach(Event eventSelectedAttach) {
+		this.eventSelectedAttach = eventSelectedAttach;
+	}
+
+	public Show getShowSelectedAttach() {
+		return showSelectedAttach;
+	}
+
+	public void setShowSelectedAttach(Show showSelectedAttach) {
+		this.showSelectedAttach = showSelectedAttach;
+	}
+
+	public List<Show> getShowsSelectedAttach() {
+		showsSelectedAttach = showmanagementlocal.findAllShows();
+		return showsSelectedAttach;
+	}
+
+	public void setShowsSelectedAttach(List<Show> showsSelectedAttach) {
+		this.showsSelectedAttach = showsSelectedAttach;
 	}
 
 }
