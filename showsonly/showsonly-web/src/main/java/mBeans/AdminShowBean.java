@@ -127,6 +127,10 @@ public class AdminShowBean {
 		}
 		return "";
 	}
+	
+	public Show doFindShowById(Integer id){
+		return showmanagementlocal.findShowById(id);
+	}
 
 	public Event doFindEventByName(String name) {
 		return eventmanagementlocal.findEventByName(name);

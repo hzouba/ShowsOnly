@@ -65,7 +65,7 @@ Create trip film.'><img alt=''
 	<ui:define name="pageContent">
 		<div class="content-wrapper specific--wrapper">
 			<div class="container">
-				<h:outputText value="#{param['id']}" />
+				<h:outputText value="#{adminShowBean.doFindShowById(param['id']).title}" />
 			</div>
 		</div>
 	</ui:define>
