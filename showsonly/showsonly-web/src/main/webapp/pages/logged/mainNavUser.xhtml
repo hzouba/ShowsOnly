@@ -28,9 +28,6 @@
                         <li>
                             <a href="cinema-list.html">Theatres</a>
                         </li>
-                        <li>
-                            <a href="#">Regestration</a>
-                        </li>
                     </ul>
                 </nav>
            <!-- Additional header buttons / Auth and direct link to booking-->
@@ -42,7 +39,7 @@
                         </span>
                       </div>
                       <a href="#" class="btn btn--sign btn--singin">
-                          me
+                          <h:outputText value="#{loginBean.user.name}"></h:outputText>
                       </a>
                         <ul class="auth__function">
                             <li><a href="#" class="auth__function-item">Booked tickets</a></li>

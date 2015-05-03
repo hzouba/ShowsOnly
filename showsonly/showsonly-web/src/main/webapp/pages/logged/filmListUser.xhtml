@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<div class="clearfix"></div>
+
+	<h2 id='target' class="page-heading heading--outcontainer">Now in
+		the cinema</h2>
+
+
+
+	<div class="col-sm-12">
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+				<ui:repeat var="show" value="#{adminShowBean.shows}">
+					<!-- Movie variant with time -->
+					<div class="movie movie--test movie--test--dark movie--test--left">
+						<div class="movie__images"> 
+							<img alt='' src="http://placehold.it/424x424" />
+						</div>
+
+						<div class="movie__info">
+							<a href='#' class="movie__title">#{show.title}</a>
+
+							<p class="movie__time">91 min</p>
+
+							<p class="movie__option">
+								#{show.crew}
+							</p>
+
+							<p class="movie__option">
+								#{show.description}
+							</p>
+							<div class="movie__rate">
+                                <h:link class="btn btn-md btn--warning" value="book a ticket for this movie" outcome="bookaticket">
+                                	<f:param name="id" value="#{show.id}"/>
+                                </h:link>
+                            </div>
+						</div>
+					</div>
+					<!-- Movie variant with time -->
+				</ui:repeat>
+			</div>
+		</div>
+	</div>
+
+</ui:composition>

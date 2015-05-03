@@ -31,6 +31,11 @@ public class LoginBean {
 		}
 		return navigateTo;
 	}
+	
+	public User getCurrentUser(Integer id){
+		user = accountManagementLocal.findUserById(id);
+		return user;
+	}
 
 	public User getUser() {
 		return user;
