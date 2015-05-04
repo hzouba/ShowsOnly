@@ -16,7 +16,7 @@ import services.interfaces.EventManagementLocal;
 
 
 
-@ManagedBean(name="ec")
+@FacesConverter("ec")
 public class EventConverter implements Converter {
 
 	
