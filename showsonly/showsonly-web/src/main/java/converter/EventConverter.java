@@ -16,8 +16,7 @@ import services.interfaces.EventManagementLocal;
 
 
 
-@ManagedBean
-@FacesConverter("ec")
+@ManagedBean(name="ec")
 public class EventConverter implements Converter {
 
 	
@@ -34,7 +33,7 @@ public class EventConverter implements Converter {
 				.evaluateExpressionGet(context, "#{AdminShowBean}",
 						AdminShowBean.class);
 		
-		Event event = adminshowbean.doFindEventByName(string);
+		Event event = adminshowbean.doFindEventByName("test");
 		return event;}
 	}
 

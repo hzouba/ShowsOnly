@@ -93,7 +93,7 @@ public class AdminShowBean {
 	}
 
 	public String doAddShow() {
-		showmanagementlocal.addShow(show);		
+		showmanagementlocal.addShow(show);
 		visibilityadd = false;
 		return "";
 	}
@@ -122,24 +122,26 @@ public class AdminShowBean {
 
 	public String doAssignShowToEvent() {
 		for (Show s : showsSelectedAttach) {
-			//assignmentmanagementlocal.assignShowToEvent(s.getId(),eventSelectedAttach.getId());
+			// assignmentmanagementlocal.assignShowToEvent(s.getId(),eventSelectedAttach.getId());
 		}
 		return "";
 	}
+
 	public String doAssignShowToEvent2() {
-		 {
-			assignmentmanagementlocal.assignShowToEvent(1,1);
+		{
+			assignmentmanagementlocal.assignShowToEvent(1, 1);
 		}
 		return "";
 	}
+
 	public String doCreatePerformance() {
-		 {
+		{
 			assignmentmanagementlocal.assignShowToTheater(1, 1, "2012");
 		}
 		return "";
 	}
-	
-	public Show doFindShowById(Integer id){
+
+	public Show doFindShowById(Integer id) {
 		return showmanagementlocal.findShowById(id);
 	}
 

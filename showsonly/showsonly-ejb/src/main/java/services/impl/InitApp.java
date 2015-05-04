@@ -50,10 +50,26 @@ public class InitApp implements InitAppRemote, InitAppLocal {
 		entityManager.persist(event3);
 		entityManager.persist(event4);
 		entityManager.persist(event5);
-	Show show = new Show("test","test","test") ;
-	Theater theater=new Theater("Theater1", 300, "typ");
+		Show show = new Show("Fast&furious","Deckard Shaw seeks revenge against Dominic Toretto and his family for his comatose brother.","James Wan") ;
+		Show show1 = new Show("Unfriended","A group of online chat room friends find themselves haunted by a mysterious, supernatural force using the account of their dead friend.","Levan Gabriadze") ;
+		Show show2 = new Show("Mall cop 2","After six years of keeping our malls safe, Paul Blart has earned a well-deserved vacation. He heads to Vegas with his teenage daughter before she heads off to college. But safety never takes a holiday and when duty calls, Blart answers.","Andy Fickman") ;
+		Show show3 = new Show("The longest ride","After an automobile crash, the lives of a young couple intertwine with a much older man, as he reflects back on a past love.","George Tillman Jr.") ;
+		Show show4 = new Show("Woman in gold","Maria Altmann, an octogenarian Jewish refugee, takes on the Austrian government to recover artwork she believes rightfully belongs to her family.","Simon Curtis") ;
+		entityManager.persist(show);
+		entityManager.persist(show1);
+		entityManager.persist(show2);
+		entityManager.persist(show3);
+		entityManager.persist(show4);
+	Theater theater=new Theater("Cinema Village", 300, "22 E 12th StNew York, NY 10003 États-Unis");
+	Theater theater1=new Theater("AMC Loews Kips Bay 15", 600, "143 E Houston St New York, NY 10002 États-Unis");
+	Theater theater2=new Theater("Sunshine Cinema", 600, "850 Broadway New York, NY 10003 États-Unis");
+	Theater theater3=new Theater("Regal Cinemas Union Square 14", 450, "323 Avenue of the Americas New York, NY 10014 États-Unis");
+	Theater theater4=new Theater("Cinema 1, 2 & 3", 800, "890 Broadway");
 	entityManager.persist(theater);
-	entityManager.persist(show);
+	entityManager.persist(theater1);
+	entityManager.persist(theater2);
+	entityManager.persist(theater3);
+	entityManager.persist(theater4);
 
 
 	
