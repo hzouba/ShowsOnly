@@ -102,7 +102,20 @@ public class AssignmentManagement implements AssignmentManagementRemote,
 	@Override
 	public Boolean BuyTicket(PerformanceId performance, Integer userId) {
 		// TODO Auto-generated method stub
-		return null;
+		Boolean b = false;
+		try {
+			Performance performanceSelected = entityManager.find(Performance.class, performance);
+			User selecteduser = entityManager.find(User.class, 1);
+			Ticket ticket= new Ticket(selecteduser, performanceSelected);
+			entityManager.merge(ticket);
+			
+			b = true;
+		} catch (Exception e) {
+
+		}
+		return b;
+		
+		
 	}
 
 }
