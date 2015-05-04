@@ -122,8 +122,19 @@ public class AdminShowBean {
 
 	public String doAssignShowToEvent() {
 		for (Show s : showsSelectedAttach) {
-			assignmentmanagementlocal.assignShowToEvent(s.getId(),
-					eventSelectedAttach.getId());
+			//assignmentmanagementlocal.assignShowToEvent(s.getId(),eventSelectedAttach.getId());
+		}
+		return "";
+	}
+	public String doAssignShowToEvent2() {
+		 {
+			assignmentmanagementlocal.assignShowToEvent(1,1);
+		}
+		return "";
+	}
+	public String doCreatePerformance() {
+		 {
+			assignmentmanagementlocal.assignShowToTheater(1, 1, "2012");
 		}
 		return "";
 	}

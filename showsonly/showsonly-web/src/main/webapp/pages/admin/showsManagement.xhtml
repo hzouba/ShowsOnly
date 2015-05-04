@@ -89,6 +89,10 @@
 
 					<h:commandButton action="#{adminShowBean.doAddShow()}" value="Save"
 						class="btn btn-md btn--danger" />
+						<h:commandButton action="#{adminShowBean.doAssignShowToEvent2()}"
+						value="Test assign show event" class="btn btn-md btn--danger" />
+							<h:commandButton action="#{adminShowBean.doCreatePerformance()}"
+						value="Test create performance" class="btn btn-md btn--danger" />
 				</div>
 			</div>
 		</h:form>
@@ -135,18 +139,19 @@
 								itemLabel="#{e.name}" itemValue="#{e}"></f:selectItems>
 						</h:selectOneMenu>
 					</div>
-
 					<div class="form-group">
 						<label>Shows</label>
-						<h:selectManyMenu class="form-control"
+						<h:selectOneMenu class="form-control"
 							value="#{adminShowBean.showSelectedAttach}" converter="sc">
 							<f:selectItems value="#{adminShowBean.showsSelectedAttach}" var="sh"
 								itemLabel="#{sh.title}" itemValue="#{sh}"></f:selectItems>
-						</h:selectManyMenu>
+						</h:selectOneMenu>
+					
 					</div>
 
 					<h:commandButton action="#{adminShowBean.doAssignShowToEvent()}"
 						value="Save" class="btn btn-md btn--danger" />
+						
 				</div>
 			</div>
 		</h:form>

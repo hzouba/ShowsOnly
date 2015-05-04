@@ -20,8 +20,8 @@ public class ShowConverter implements Converter {
 		AdminShowBean adminshowbean = (AdminShowBean) context.getApplication()
 				.evaluateExpressionGet(context, "#{AdminShowBean}",
 						AdminShowBean.class);
-		Show show = adminshowbean.doFindShowtByName(string);
-		return show;
+		//Show show = adminshowbean.doFindShowtByName(string);
+		return null;
 	}
 
 	@Override

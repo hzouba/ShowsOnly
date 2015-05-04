@@ -10,7 +10,9 @@ import services.interfaces.InitAppLocal;
 import services.interfaces.InitAppRemote;
 import domain.Admin;
 import domain.Event;
+import domain.Theater;
 import domain.Visitor;
+import domain.Show;
 
 
 /**
@@ -48,7 +50,13 @@ public class InitApp implements InitAppRemote, InitAppLocal {
 		entityManager.persist(event3);
 		entityManager.persist(event4);
 		entityManager.persist(event5);
+	Show show = new Show("test","test","test") ;
+	Theater theater=new Theater("Theater1", 300, "typ");
+	entityManager.persist(theater);
+	entityManager.persist(show);
 
+
+	
 	
 	}
 
